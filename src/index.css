@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+.chatscreen{
+    max-height: calc(100vh - 32px);
+    height: calc(100vh - 32px);
+    overflow-y: scroll;
+}
