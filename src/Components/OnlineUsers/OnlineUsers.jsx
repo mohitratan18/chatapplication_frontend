@@ -28,7 +28,8 @@ const OnlineUsers = ({ _id, name, email, roomData, setroomData, socketId ,setMsg
     // console.log(await response.json()); 
     const res = await response.json();
     // console.log(setAllMsg);
-    setMsg(res.messages.messages);
+    console.log(setroomData);
+    setMsg(res.messages);
   };
   return (
     <div className="flex gap-4 cursor-pointer">

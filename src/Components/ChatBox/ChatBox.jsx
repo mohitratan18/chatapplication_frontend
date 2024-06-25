@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import { CiUser } from "react-icons/ci";
 import {
   Avatar,
@@ -26,6 +26,10 @@ const ChatBox = ({ roomData, setmsg, sendmessage, msg, AllMsg, user }) => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim accusamus, consequuntur minima odio illo atque earum dolor porro incidunt necessitatibus iure?",
     },
   ];
+  useEffect(() => {
+    window.location.href = import.meta.env.VITE_FRONTEND_URL + "#scroll-bottom";
+  }, [AllMsg]);
+
   return (
     <>
       {roomData.room ? (
@@ -66,7 +70,7 @@ const ChatBox = ({ roomData, setmsg, sendmessage, msg, AllMsg, user }) => {
                   }}
                 ></Stack>
                 <List sx={{ p: 0, overflowY: "auto", flex: "1 0 0" }}>
-                  {AllMsg.map((item, index) => (
+                  {AllMsg?.map((item, index) => (
                     <ListItem
                       sx={
                         item.sender._id === user._id
@@ -139,7 +143,9 @@ const ChatBox = ({ roomData, setmsg, sendmessage, msg, AllMsg, user }) => {
                                 }
                               }
                             >
-                              12.20 PM
+                              {/* 12.20 PM */}
+                              {item.createdAt}
+                              {/* {item.getHours().toString().padStart(2, '0')} */}
                             </Typography>
                             <Box>
                               <IconButton size="small">
@@ -158,131 +164,8 @@ const ChatBox = ({ roomData, setmsg, sendmessage, msg, AllMsg, user }) => {
                       </Box>
                     </ListItem>
                   ))}
-                  {/* <ListItem sx={{ mb: 2 }}>
-          <Box sx={{ display: "flex", width: "80%" }}>
-            <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar>
-            <Paper sx={{ width: "100%", p: 1.5 }}>
-              <ListItemText
-                sx={{ m: 0 }}
-                primary="Vikas Kumar"
-                secondary={
-                  <Typography variant="caption">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when
-                  </Typography>
-                }
-              />
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mt: 1,
-                }}
-              >
-                <Typography variant="body2">12.20 PM</Typography>
-                <Box>
-                  <IconButton size="small">
-                    <ReplyIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small" color="error">
-                    <DeleteOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Box>
-              </Box>
-            </Paper>
-          </Box>
-        </ListItem>
-        <ListItem sx={{ flexDirection: "row-reverse", mb: 2 }}>
-          <Box
-            sx={{ display: "flex", width: "80%", flexDirection: "row-reverse" }}
-          >
-            <ListItemAvatar
-              sx={{ display: "flex", flexDirection: "row-reverse" }}
-            >
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar>
-            <Paper
-              sx={{
-                width: "100%",
-                p: 1.5,
-                bgcolor: "#ccc",
-              }}
-            >
-              <ListItemText
-                sx={{ m: 0 }}
-                primary="Vikas Kumar"
-                secondary={
-                  <Typography variant="caption">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when
-                  </Typography>
-                }
-              />
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mt: 1,
-                }}
-              >
-                <Typography variant="body2">12.20 PM</Typography>
-                <Box>
-                  <IconButton size="small">
-                    <ReplyIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small" color="error">
-                    <DeleteOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Box>
-              </Box>
-            </Paper>
-          </Box>
-        </ListItem>
-        <ListItem sx={{ mb: 2 }}>
-          <Box sx={{ display: "flex", width: "80%" }}>
-            <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar>
-            <Paper sx={{ width: "100%", p: 1.5 }}>
-              <ListItemText
-                sx={{ m: 0 }}
-                primary="Vikas Kumar"
-                secondary={
-                  <Typography variant="caption">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when
-                  </Typography>
-                }
-              />
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mt: 1,
-                }}
-              >
-                <Typography variant="body2">12.20 PM</Typography>
-                <Box>
-                  <IconButton size="small">
-                    <ReplyIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small" color="error">
-                    <DeleteOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Box>
-              </Box>
-            </Paper>
-          </Box>
-        </ListItem> */}
                 </List>
+                <div id="scroll-bottom"></div>
               </Box>
 
               <form onSubmit={sendmessage} className="w-full flex gap-2 mt-4">

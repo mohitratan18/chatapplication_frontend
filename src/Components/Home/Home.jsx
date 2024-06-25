@@ -19,6 +19,7 @@ const Home = () => {
   const [roomData, setroomData] = useState({
     room: null,
   });
+  // const [AllMsg, setAllMsg] = useState([])
   const [AllMsg, setAllMsg] = useState([])
   const [onlineUsers, setonlineUsers] = useState([]);
   const [isConnected, setisConnected] = useState(true);
@@ -163,6 +164,7 @@ const Home = () => {
                     key={index}
                     roomData={roomData}
                     setroomData={setroomData}
+                    setMsg={setMsg}
                   />
                 );
               })}
