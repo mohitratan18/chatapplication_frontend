@@ -27,7 +27,7 @@ const ChatBox = ({ roomData, setmsg, sendmessage, msg, AllMsg, user }) => {
     },
   ];
   useEffect(() => {
-    window.location.href = import.meta.env.VITE_FRONTEND_URL + "#scroll-bottom";
+    // window.location.href = import.meta.env.VITE_FRONTEND_URL + "#scroll-bottom";
   }, [AllMsg]);
 
   return (
